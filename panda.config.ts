@@ -1,20 +1,19 @@
-import { defineConfig } from "@pandacss/dev";
+import {defineConfig, defineGlobalStyles} from '@pandacss/dev'
+import * as R from 'remeda'
+import {color} from './color'
 
 export default defineConfig({
-  // Whether to use css reset
   preflight: true,
   strictTokens: true,
-  jsxStyleProps: "minimal",
-  jsxFactory: "box",
-  jsxFramework: "react",
+  jsxStyleProps: 'minimal',
+  jsxFactory: 'box',
+  jsxFramework: 'react',
   shorthands: true,
-  separator: "_",
-  syntax: "object-literal",
+  separator: '_',
+  syntax: 'object-literal',
+  outdir: 'styled-system',
 
-  // Where to look for your css declarations
-  include: ["./src/**/*.{ts,tsx}"],
-
-  // Files to exclude
+  include: ['./src/**/*.{ts,tsx}'],
   exclude: [],
   presets: [],
 
@@ -25,32 +24,65 @@ export default defineConfig({
     light: '[data-mode="light"] &',
   },
 
-  globalCss: {
-    body: {
-      bg: "base",
-    },
-  },
-
   // Useful for theme customization
   theme: {
+    tokens: {
+      colors: R.pipe(
+        color,
+        R.mapValues((v) => ({value: v} as const)),
+      ),
+    },
     semanticTokens: {
       colors: {
         base: {
-          value: {
-            base: "white",
-            _dark: "black",
+          raised: {
+            value: {
+              base: 'white',
+              _dark: '{colors.grey1400}',
+            },
+          },
+          sunken: {
+            value: {
+              base: '{colors.grey50}',
+              _dark: 'black',
+            },
+          },
+          DEFAULT: {
+            value: {
+              base: 'white',
+              _dark: '{colors.grey1500}',
+            },
+          },
+        },
+        shadow: {
+          neutral: {
+            1: {
+              value: {
+                base: '{colors.blackAlpha100}',
+                _dark: '{colors.blackAlpha600}',
+              },
+            },
+            2: {
+              value: {
+                base: '{colors.blackAlpha200}',
+                _dark: '{colors.blackAlpha800}',
+              },
+            },
           },
         },
         accent: {
           value: {
-            _alpha: { base: "blue", _dark: "lightblue" },
-            _beta: { base: "purple", _dark: "fuchsia" },
+            _alpha: {base: 'blue', _dark: 'lightblue'},
+            _beta: {base: 'purple', _dark: 'fuchsia'},
           },
         },
       },
     },
   },
 
-  // The output directory for your css system
-  outdir: "styled-system",
-});
+  globalCss: defineGlobalStyles({
+    body: {
+      bg: 'base.sunken',
+    },
+  }),
+})

@@ -1,21 +1,21 @@
-import { box } from "../styled-system/jsx";
-import { Base } from "./modules/Base";
+import {box} from '../styled-system/jsx'
+import {Base} from './modules/Base'
 
 export function App() {
   return (
-    <box.div>
+    <box.div css={{p: '8', display: 'flex', flexDirection: 'column', gap: '8'}}>
       <Base>
-        <box.h1 css={{ color: "accent", bg: "base" }}>alpha light</box.h1>
+        <box.h1 css={{color: 'accent'}}>alpha light</box.h1>
       </Base>
-      <Base mode="dark">
-        <box.h1 css={{ color: "accent" }}>alpha dark</box.h1>
+      <Base variant={{mode: 'dark'}}>
+        <box.h1 css={{color: 'accent'}}>alpha dark</box.h1>
       </Base>
-      <Base theme="beta">
-        <box.h1 css={{ color: "accent" }}>beta light</box.h1>
+      <Base variant={{theme: 'beta'}}>
+        <box.h1 css={{color: 'accent'}}>beta light</box.h1>
       </Base>
-      <Base theme="beta" mode="dark">
-        <box.h1 css={{ color: "accent" }}>beta dark</box.h1>
+      <Base variant={{mode: 'dark', theme: 'beta'}}>
+        <box.h1 css={{color: 'accent'}}>beta dark</box.h1>
       </Base>
     </box.div>
-  );
+  )
 }

@@ -1,19 +1,42 @@
-import { box } from "../../styled-system/jsx";
+import {cva} from '../../styled-system/css'
+import {box} from '../../styled-system/jsx'
 
-export function Base(
-  props: React.ComponentPropsWithRef<"div"> & {
-    theme?: "alpha" | "beta";
-    mode?: "light" | "dark";
+const baseRecipe = cva({
+  variants: {
+    level: {
+      raised: {
+        bg: 'base.raised',
+        shadowColor: 'shadow.neutral.1',
+      },
+      sunken: {
+        bg: 'base.sunken',
+      },
+      default: {
+        bg: 'base',
+      },
+    },
+  },
+})
+
+export type BaseProps = Readonly<
+  React.ComponentPropsWithRef<'div'> & {
+    variant?: {
+      theme?: 'alpha' | 'beta'
+      mode?: 'light' | 'dark'
+      level?: 'sunken' | 'raised' | 'default'
+    }
   }
-) {
-  const { theme = "alpha", mode = "light", ...rest } = props;
+>
+
+export function Base(props: BaseProps) {
+  const {variant, ...rest} = props
 
   return (
     <box.div
-      css={{ bg: "base" }}
-      data-theme={theme}
-      data-mode={mode}
+      data-theme={variant?.theme ?? 'alpha'}
+      data-mode={variant?.mode ?? 'light'}
+      css={baseRecipe.raw({level: variant?.level ?? 'default'})}
       {...rest}
     />
-  );
+  )
 }
