@@ -26,6 +26,32 @@ export default defineConfig({
     light: '[data-mode="light"] &',
   },
 
+  globalVars: {
+    '--font-ars': 'ArsMaquette, monospace',
+  },
+  globalFontface: {
+    ArsMaquette: [
+      {
+        src: `url('/arsmaquettepro-regular.woff2') format('woff2')`,
+        fontStyle: 'normal',
+        fontWeight: 400,
+        fontDisplay: 'swap',
+      },
+      {
+        src: "url('/arsmaquettepro-medium.woff2') format('woff2')",
+        fontStyle: 'normal',
+        fontWeight: 500,
+        fontDisplay: 'swap',
+      },
+      {
+        src: "url('/arsmaquettepro-bold.woff2') format('woff2')",
+        fontStyle: 'normal',
+        fontWeight: 700,
+        fontDisplay: 'swap',
+      },
+    ],
+  },
+
   // Useful for theme customization
   theme: {
     extend: {
@@ -34,6 +60,11 @@ export default defineConfig({
           color,
           R.mapValues((v) => ({value: v}) as const),
         ),
+        fonts: {
+          ars: {
+            value: 'var(--font-ars)',
+          },
+        },
       },
     },
     semanticTokens: {
@@ -148,6 +179,9 @@ export default defineConfig({
   },
 
   globalCss: defineGlobalStyles({
+    ':root': {
+      fontFamily: 'ArsMaquette',
+    },
     'html, body': {
       h: '100%',
     },
