@@ -50,9 +50,6 @@ export function App() {
           rowGap: '4',
           columnGap: '4',
           columns: 2,
-          _first: {
-            p: '2',
-          },
         })}
       >
         <Zone variant={{level: 'raised'}}>
