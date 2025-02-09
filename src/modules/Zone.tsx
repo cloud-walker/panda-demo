@@ -2,10 +2,9 @@ import {cva} from '../../styled-system/css'
 import {box} from '../../styled-system/jsx'
 import {vstack} from '../../styled-system/patterns'
 
-const baseRecipe = cva({
+const zoneRecipe = cva({
   base: {
     p: '4',
-    fontWeight: 'medium',
     ...vstack.raw(),
   },
   variants: {
@@ -28,7 +27,7 @@ const baseRecipe = cva({
   },
 })
 
-export type BaseProps = Readonly<
+export type ZoneProps = Readonly<
   React.ComponentPropsWithRef<'div'> & {
     variant?: {
       theme?: 'alpha' | 'beta'
@@ -38,15 +37,22 @@ export type BaseProps = Readonly<
   }
 >
 
-export function Base(props: BaseProps) {
+export function Zone(props: ZoneProps) {
   const {variant, ...rest} = props
+  const theme = variant?.theme ?? 'alpha'
+  const mode = variant?.mode ?? 'light'
 
   return (
     <box.div
-      data-theme={variant?.theme ?? 'alpha'}
-      data-mode={variant?.mode ?? 'light'}
-      css={baseRecipe.raw({level: variant?.level ?? 'default'})}
+      data-theme={theme}
+      data-mode={mode}
+      css={zoneRecipe.raw({level: variant?.level ?? 'default'})}
       {...rest}
-    />
+    >
+      <box.h1 css={{color: 'text.accent', fontWeight: 'medium'}}>
+        {theme} {mode} zone
+      </box.h1>
+      {rest.children}
+    </box.div>
   )
 }

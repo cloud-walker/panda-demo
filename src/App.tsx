@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
 import {box} from '../styled-system/jsx'
-import {Base} from './modules/Base'
+import {Zone} from './modules/Zone'
 import {grid, hstack} from '../styled-system/patterns'
 import {Button} from './modules/Button'
 
@@ -55,33 +55,21 @@ export function App() {
           },
         })}
       >
-        <Base variant={{level: 'raised'}}>
-          <box.h1 css={{color: 'text.accent'}}>alpha light</box.h1>
-          <Base variant={{level: 'raised', mode: 'dark'}}>
-            <box.h1 css={{color: 'text.accent'}}>alpha dark</box.h1>
-          </Base>
-        </Base>
+        <Zone variant={{level: 'raised'}}>
+          <Zone variant={{level: 'raised', mode: 'dark'}} />
+        </Zone>
 
-        <Base variant={{level: 'raised', mode: 'dark'}}>
-          <box.h1 css={{color: 'text.accent'}}>alpha dark</box.h1>
-          <Base variant={{level: 'raised'}}>
-            <box.h1 css={{color: 'text.accent'}}>alpha light</box.h1>
-          </Base>
-        </Base>
+        <Zone variant={{level: 'raised', mode: 'dark'}}>
+          <Zone variant={{level: 'raised'}} />
+        </Zone>
 
-        <Base variant={{level: 'raised', theme: 'beta'}}>
-          <box.h1 css={{color: 'text.accent'}}>beta light</box.h1>
-          <Base variant={{level: 'raised', mode: 'dark', theme: 'beta'}}>
-            <box.h1 css={{color: 'text.accent'}}>beta dark</box.h1>
-          </Base>
-        </Base>
+        <Zone variant={{level: 'raised', theme: 'beta'}}>
+          <Zone variant={{level: 'raised', mode: 'dark', theme: 'beta'}} />
+        </Zone>
 
-        <Base variant={{level: 'raised', mode: 'dark', theme: 'beta'}}>
-          <box.h1 css={{color: 'text.accent'}}>beta dark</box.h1>
-          <Base variant={{level: 'raised', theme: 'beta'}}>
-            <box.h1 css={{color: 'text.accent'}}>beta light</box.h1>
-          </Base>
-        </Base>
+        <Zone variant={{level: 'raised', mode: 'dark', theme: 'beta'}}>
+          <Zone variant={{level: 'raised', theme: 'beta'}} />
+        </Zone>
       </box.div>
     </box.div>
   )
