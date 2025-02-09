@@ -54,6 +54,16 @@ export default defineConfig({
             },
           },
         },
+        text: {
+          neutral: {
+            DEFAULT: {
+              value: {
+                base: '{colors.grey1300}',
+                _dark: 'white',
+              },
+            },
+          },
+        },
         shadow: {
           neutral: {
             1: {
@@ -81,8 +91,12 @@ export default defineConfig({
   },
 
   globalCss: defineGlobalStyles({
+    'html, body': {
+      h: '100%',
+    },
     body: {
       bg: 'base.sunken',
+      color: 'text.neutral',
     },
   }),
 })
