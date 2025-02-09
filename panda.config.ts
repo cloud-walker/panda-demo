@@ -21,9 +21,6 @@ export default defineConfig({
   // presets: ["@pandacss/preset-base"],
 
   conditions: {
-    // alpha: '[data-theme="alpha"] &',
-    // beta: '[data-theme="beta"] &',
-
     dark: '[data-panda-mode="dark"] &',
     light: '[data-panda-mode="light"] &',
   },
