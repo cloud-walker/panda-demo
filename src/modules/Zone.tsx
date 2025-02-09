@@ -44,8 +44,8 @@ export function Zone(props: ZoneProps) {
 
   return (
     <box.div
-      data-theme={theme}
-      data-mode={mode}
+      data-panda-theme={theme}
+      data-panda-mode={mode}
       css={zoneRecipe.raw({level: variant?.level ?? 'default'})}
       {...rest}
     >
