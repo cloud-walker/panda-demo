@@ -1,5 +1,6 @@
 import {defineConfig, defineGlobalStyles} from '@pandacss/dev'
 import * as R from 'remeda'
+
 import {color} from './color'
 
 export default defineConfig({
@@ -12,10 +13,11 @@ export default defineConfig({
   separator: '_',
   syntax: 'object-literal',
   outdir: 'styled-system',
+  // dependencies: ["@pandacss/styled-system"],
 
   include: ['./src/**/*.{ts,tsx}'],
   exclude: [],
-  presets: [],
+  // presets: ["@pandacss/preset-base"],
 
   conditions: {
     alpha: '[data-theme="alpha"] &',
@@ -26,31 +28,57 @@ export default defineConfig({
 
   // Useful for theme customization
   theme: {
-    tokens: {
-      colors: R.pipe(
-        color,
-        R.mapValues((v) => ({value: v} as const)),
-      ),
+    extend: {
+      tokens: {
+        colors: R.pipe(
+          color,
+          R.mapValues((v) => ({value: v}) as const),
+        ),
+      },
     },
     semanticTokens: {
       colors: {
         base: {
           raised: {
             value: {
-              base: 'white',
+              _light: 'white',
               _dark: '{colors.grey1400}',
             },
           },
           sunken: {
             value: {
-              base: '{colors.grey50}',
+              _light: '{colors.grey50}',
               _dark: 'black',
             },
           },
           DEFAULT: {
             value: {
-              base: 'white',
+              _light: 'white',
               _dark: '{colors.grey1500}',
+            },
+          },
+        },
+        fill: {
+          neutral: {
+            primary: {
+              value: {
+                _light: '{colors.grey1300}',
+                _dark: 'white',
+              },
+            },
+          },
+          accent: {
+            primary: {
+              value: {
+                _alpha: {
+                  _light: '{colors.blue1100}',
+                  _dark: '{colors.blue800}',
+                },
+                _beta: {
+                  _light: '{colors.purple1100}',
+                  _dark: '{colors.purple800}',
+                },
+              },
             },
           },
         },
@@ -58,8 +86,43 @@ export default defineConfig({
           neutral: {
             DEFAULT: {
               value: {
-                base: '{colors.grey1300}',
+                _light: '{colors.grey1300}',
                 _dark: 'white',
+              },
+            },
+            on: {
+              neutral: {
+                value: {
+                  _light: 'white',
+                  _dark: 'black',
+                },
+              },
+              accent: {
+                value: {
+                  _light: 'white',
+                  _dark: 'white',
+                },
+              },
+            },
+          },
+          accent: {
+            value: {
+              _alpha: {
+                _light: '{colors.blue1100}',
+                _dark: '{colors.blue500}',
+              },
+              _beta: {
+                _light: '{colors.purple1100}',
+                _dark: '{colors.purple500}',
+              },
+            },
+          },
+        },
+        border: {
+          neutral: {
+            tertiary: {
+              alpha: {
+                value: '{colors.blackAlpha100}',
               },
             },
           },
@@ -68,22 +131,16 @@ export default defineConfig({
           neutral: {
             1: {
               value: {
-                base: '{colors.blackAlpha100}',
+                _light: '{colors.blackAlpha100}',
                 _dark: '{colors.blackAlpha600}',
               },
             },
             2: {
               value: {
-                base: '{colors.blackAlpha200}',
+                _light: '{colors.blackAlpha200}',
                 _dark: '{colors.blackAlpha800}',
               },
             },
-          },
-        },
-        accent: {
-          value: {
-            _alpha: {base: 'blue', _dark: 'lightblue'},
-            _beta: {base: 'purple', _dark: 'fuchsia'},
           },
         },
       },
@@ -99,4 +156,6 @@ export default defineConfig({
       color: 'text.neutral',
     },
   }),
+
+  // patterns: {},
 })

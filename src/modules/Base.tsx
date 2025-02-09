@@ -1,12 +1,22 @@
 import {cva} from '../../styled-system/css'
 import {box} from '../../styled-system/jsx'
+import {vstack} from '../../styled-system/patterns'
 
 const baseRecipe = cva({
+  base: {
+    p: '4',
+    fontWeight: 'medium',
+    ...vstack.raw(),
+  },
   variants: {
     level: {
       raised: {
         bg: 'base.raised',
-        shadowColor: 'shadow.neutral.1',
+        boxShadow: '0 2px {colors.shadow.neutral.2}',
+        borderWidth: '[2px]',
+        borderStyle: 'solid',
+        borderColor: 'border.neutral.tertiary.alpha',
+        rounded: '[8px]',
       },
       sunken: {
         bg: 'base.sunken',
