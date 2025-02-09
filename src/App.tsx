@@ -5,12 +5,15 @@ import {Zone} from './modules/Zone'
 import {grid, hstack} from '../styled-system/patterns'
 import {Button} from './modules/Button'
 
+const themeDataAttr = 'data-panda-theme'
+const modeDataAttr = 'data-panda-mode'
+
 export function App() {
   const [mode, setMode] = useState(() => {
-    return document.body.getAttribute('data-mode')
+    return document.body.getAttribute(modeDataAttr)
   })
   const [theme, setTheme] = useState(() => {
-    return document.body.getAttribute('data-theme')
+    return document.body.getAttribute(themeDataAttr)
   })
   return (
     <box.div
@@ -28,7 +31,7 @@ export function App() {
           variant={{tone: 'accent'}}
           onClick={() => {
             const nextTheme = theme === 'alpha' ? 'beta' : 'alpha'
-            document.body.setAttribute('data-theme', nextTheme)
+            document.body.setAttribute(themeDataAttr, nextTheme)
             setTheme(nextTheme)
           }}
         >
@@ -37,7 +40,7 @@ export function App() {
         <Button
           onClick={() => {
             const nextMode = mode === 'light' ? 'dark' : 'light'
-            document.body.setAttribute('data-mode', nextMode)
+            document.body.setAttribute(modeDataAttr, nextMode)
             setMode(nextMode)
           }}
         >

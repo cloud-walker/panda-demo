@@ -21,10 +21,11 @@ export default defineConfig({
   // presets: ["@pandacss/preset-base"],
 
   conditions: {
-    alpha: '[data-theme="alpha"] &',
-    beta: '[data-theme="beta"] &',
-    dark: '[data-mode="dark"] &',
-    light: '[data-mode="light"] &',
+    // alpha: '[data-theme="alpha"] &',
+    // beta: '[data-theme="beta"] &',
+
+    dark: '[data-panda-mode="dark"] &',
+    light: '[data-panda-mode="light"] &',
   },
 
   globalVars: {
@@ -73,109 +74,313 @@ export default defineConfig({
         },
       },
     },
-    semanticTokens: {
-      colors: {
-        base: {
-          raised: {
-            value: {
-              _light: 'white',
-              _dark: '{colors.grey1400}',
-            },
-          },
-          sunken: {
-            value: {
-              _light: '{colors.grey50}',
-              _dark: 'black',
-            },
-          },
-          DEFAULT: {
-            value: {
-              _light: 'white',
-              _dark: '{colors.grey1500}',
-            },
-          },
-        },
-        fill: {
-          neutral: {
-            primary: {
+    // semanticTokens: {
+    //   colors: {
+    //     base: {
+    //       raised: {
+    //         value: {
+    //           _light: 'white',
+    //           _dark: '{colors.grey1400}',
+    //         },
+    //       },
+    //       sunken: {
+    //         value: {
+    //           _light: '{colors.grey50}',
+    //           _dark: 'black',
+    //         },
+    //       },
+    //       DEFAULT: {
+    //         value: {
+    //           _light: 'white',
+    //           _dark: '{colors.grey1500}',
+    //         },
+    //       },
+    //     },
+    //     fill: {
+    //       neutral: {
+    //         primary: {
+    //           value: {
+    //             _light: '{colors.grey1300}',
+    //             _dark: 'white',
+    //           },
+    //         },
+    //       },
+    //       accent: {
+    //         primary: {
+    //           value: {
+    //             _alpha: {
+    //               _light: '{colors.blue1100}',
+    //               _dark: '{colors.blue800}',
+    //             },
+    //             _beta: {
+    //               _light: '{colors.purple1100}',
+    //               _dark: '{colors.purple800}',
+    //             },
+    //           },
+    //         },
+    //       },
+    //     },
+    //     text: {
+    //       neutral: {
+    //         DEFAULT: {
+    //           value: {
+    //             _light: '{colors.grey1300}',
+    //             _dark: 'white',
+    //           },
+    //         },
+    //         on: {
+    //           neutral: {
+    //             value: {
+    //               _light: 'white',
+    //               _dark: 'black',
+    //             },
+    //           },
+    //           accent: {
+    //             value: {
+    //               _light: 'white',
+    //               _dark: 'white',
+    //             },
+    //           },
+    //         },
+    //       },
+    //       accent: {
+    //         value: {
+    //           _alpha: {
+    //             _light: '{colors.blue1100}',
+    //             _dark: '{colors.blue500}',
+    //           },
+    //           _beta: {
+    //             _light: '{colors.purple1100}',
+    //             _dark: '{colors.purple500}',
+    //           },
+    //         },
+    //       },
+    //     },
+    //     border: {
+    //       neutral: {
+    //         tertiary: {
+    //           alpha: {
+    //             value: '{colors.blackAlpha100}',
+    //           },
+    //         },
+    //       },
+    //     },
+    //     shadow: {
+    //       neutral: {
+    //         1: {
+    //           value: {
+    //             _light: '{colors.blackAlpha100}',
+    //             _dark: '{colors.blackAlpha600}',
+    //           },
+    //         },
+    //         2: {
+    //           value: {
+    //             _light: '{colors.blackAlpha200}',
+    //             _dark: '{colors.blackAlpha800}',
+    //           },
+    //         },
+    //       },
+    //     },
+    //   },
+    // },
+  },
+  staticCss: {
+    themes: ['alpha', 'beta'],
+  },
+
+  themes: {
+    alpha: {
+      semanticTokens: {
+        colors: {
+          base: {
+            raised: {
               value: {
-                _light: '{colors.grey1300}',
-                _dark: 'white',
+                _light: 'white',
+                _dark: '{colors.grey1400}',
+              },
+            },
+            sunken: {
+              value: {
+                _light: '{colors.grey50}',
+                _dark: 'black',
+              },
+            },
+            DEFAULT: {
+              value: {
+                _light: 'white',
+                _dark: '{colors.grey1500}',
               },
             },
           },
-          accent: {
-            primary: {
-              value: {
-                _alpha: {
+          fill: {
+            neutral: {
+              primary: {
+                value: {
+                  _light: '{colors.grey1300}',
+                  _dark: 'white',
+                },
+              },
+            },
+            accent: {
+              primary: {
+                value: {
                   _light: '{colors.blue1100}',
                   _dark: '{colors.blue800}',
                 },
-                _beta: {
+              },
+            },
+          },
+          text: {
+            neutral: {
+              DEFAULT: {
+                value: {
+                  _light: '{colors.grey1300}',
+                  _dark: 'white',
+                },
+              },
+              on: {
+                neutral: {
+                  value: {
+                    _light: 'white',
+                    _dark: 'black',
+                  },
+                },
+                accent: {
+                  value: {
+                    _light: 'white',
+                    _dark: 'white',
+                  },
+                },
+              },
+            },
+            accent: {
+              value: {
+                _light: '{colors.blue1100}',
+                _dark: '{colors.blue500}',
+              },
+            },
+          },
+          border: {
+            neutral: {
+              tertiary: {
+                alpha: {
+                  value: '{colors.blackAlpha100}',
+                },
+              },
+            },
+          },
+          shadow: {
+            neutral: {
+              1: {
+                value: {
+                  _light: '{colors.blackAlpha100}',
+                  _dark: '{colors.blackAlpha600}',
+                },
+              },
+              2: {
+                value: {
+                  _light: '{colors.blackAlpha200}',
+                  _dark: '{colors.blackAlpha800}',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    beta: {
+      semanticTokens: {
+        colors: {
+          base: {
+            raised: {
+              value: {
+                _light: 'white',
+                _dark: '{colors.grey1400}',
+              },
+            },
+            sunken: {
+              value: {
+                _light: '{colors.grey50}',
+                _dark: 'black',
+              },
+            },
+            DEFAULT: {
+              value: {
+                _light: 'white',
+                _dark: '{colors.grey1500}',
+              },
+            },
+          },
+          fill: {
+            neutral: {
+              primary: {
+                value: {
+                  _light: '{colors.grey1300}',
+                  _dark: 'white',
+                },
+              },
+            },
+            accent: {
+              primary: {
+                value: {
                   _light: '{colors.purple1100}',
                   _dark: '{colors.purple800}',
                 },
               },
             },
           },
-        },
-        text: {
-          neutral: {
-            DEFAULT: {
-              value: {
-                _light: '{colors.grey1300}',
-                _dark: 'white',
-              },
-            },
-            on: {
-              neutral: {
+          text: {
+            neutral: {
+              DEFAULT: {
                 value: {
-                  _light: 'white',
-                  _dark: 'black',
-                },
-              },
-              accent: {
-                value: {
-                  _light: 'white',
+                  _light: '{colors.grey1300}',
                   _dark: 'white',
                 },
               },
-            },
-          },
-          accent: {
-            value: {
-              _alpha: {
-                _light: '{colors.blue1100}',
-                _dark: '{colors.blue500}',
+              on: {
+                neutral: {
+                  value: {
+                    _light: 'white',
+                    _dark: 'black',
+                  },
+                },
+                accent: {
+                  value: {
+                    _light: 'white',
+                    _dark: 'white',
+                  },
+                },
               },
-              _beta: {
+            },
+            accent: {
+              value: {
                 _light: '{colors.purple1100}',
                 _dark: '{colors.purple500}',
               },
             },
           },
-        },
-        border: {
-          neutral: {
-            tertiary: {
-              alpha: {
-                value: '{colors.blackAlpha100}',
+          border: {
+            neutral: {
+              tertiary: {
+                alpha: {
+                  value: '{colors.blackAlpha100}',
+                },
               },
             },
           },
-        },
-        shadow: {
-          neutral: {
-            1: {
-              value: {
-                _light: '{colors.blackAlpha100}',
-                _dark: '{colors.blackAlpha600}',
+          shadow: {
+            neutral: {
+              1: {
+                value: {
+                  _light: '{colors.blackAlpha100}',
+                  _dark: '{colors.blackAlpha600}',
+                },
               },
-            },
-            2: {
-              value: {
-                _light: '{colors.blackAlpha200}',
-                _dark: '{colors.blackAlpha800}',
+              2: {
+                value: {
+                  _light: '{colors.blackAlpha200}',
+                  _dark: '{colors.blackAlpha800}',
+                },
               },
             },
           },
