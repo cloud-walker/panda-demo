@@ -1,4 +1,5 @@
 import {defineConfig, defineGlobalStyles} from '@pandacss/dev'
+import {preset} from '@pandacss/preset-panda'
 import * as R from 'remeda'
 
 import {color} from './color'
@@ -54,6 +55,11 @@ export default defineConfig({
 
   // Useful for theme customization
   theme: {
+    tokens: {
+      // in the experiment we dont care configuring other tokens other than colors
+      ...preset.theme.tokens,
+      colors: {},
+    },
     extend: {
       tokens: {
         colors: R.pipe(
