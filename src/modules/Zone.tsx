@@ -11,11 +11,11 @@ const zoneRecipe = cva({
     level: {
       raised: {
         bg: 'base.raised',
-        boxShadow: '0 2px {colors.shadow.neutral.2}',
-        borderWidth: '[2px]',
+        borderWidth: '1',
         borderStyle: 'solid',
         borderColor: 'border.neutral.tertiary.alpha',
-        rounded: '[8px]',
+        rounded: 'sm',
+        shadow: 'lg',
       },
       sunken: {
         bg: 'base.sunken',
