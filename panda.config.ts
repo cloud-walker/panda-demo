@@ -27,10 +27,10 @@ export default defineConfig({
   },
 
   globalVars: {
-    '--font-ars': 'ARS Maquette Pro, monospace',
+    '--font-ars': 'ArsMaquette, monospace',
   },
   globalFontface: {
-    ars: [
+    ArsMaquette: [
       {
         src: `url('/arsmaquettepro-regular.woff2') format('woff2')`,
         fontStyle: 'normal',
@@ -180,7 +180,7 @@ export default defineConfig({
 
   globalCss: defineGlobalStyles({
     ':root': {
-      fontFamily: 'ars',
+      fontFamily: 'ArsMaquette',
     },
     'html, body': {
       h: '100%',
