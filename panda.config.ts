@@ -1,5 +1,7 @@
 import {makeConfig} from 'panda-lib/panda'
 
-export default makeConfig({
+const config = makeConfig({
   include: ['./src/**/*.{ts,tsx}'],
 })
+console.log(config)
+export default config
