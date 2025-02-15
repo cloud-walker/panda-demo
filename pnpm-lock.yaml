@@ -4,10 +4,16 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  panda-lib: link:../panda-lib
+
 importers:
 
   .:
     dependencies:
+      panda-lib:
+        specifier: link:../panda-lib
+        version: link:../panda-lib
       react:
         specifier: ^19.0.0
         version: 19.0.0
